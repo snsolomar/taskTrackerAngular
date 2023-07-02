@@ -1,3 +1,5 @@
+<!-- *ngIf allows form to toggle off and on depending on if the add or close button has been clicked -->
+<!-- showAddTask can be found in the constructor located in the header component .ts file -->
 <form *ngIf="showAddTask" class="add-form" (ngSubmit)="onSubmit()">
     <div class="form-control">
         <label for="text">Task</label>
