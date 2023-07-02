@@ -18,6 +18,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     // think of subscribe as a promise
+    // subscribe on observables -getTasks() is the observable in this case
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   };
 
