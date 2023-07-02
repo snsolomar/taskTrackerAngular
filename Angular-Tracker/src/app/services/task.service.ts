@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// Fake Database
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TASKS } from '../mock.tasks';
 // Interface
 import { Task } from 'src/app/Task';
@@ -9,6 +9,8 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskService {
+
+  private apiUrl = 'http://localhost:5000/tasks';
 
   constructor() {};
 
