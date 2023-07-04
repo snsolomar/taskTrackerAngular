@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 
 
@@ -13,6 +13,9 @@ import { Task } from 'src/app/Task';
 export class TasksComponent implements OnInit {
 
   tasks: Task[] = [];
+  editingTask: Task | null = null;
+
+  @Output() onEditTask: EventEmitter<Task> = new EventEmitter();
 
   constructor(private taskService: TaskService) { }
 
@@ -39,5 +42,22 @@ export class TasksComponent implements OnInit {
   addTask(task: Task) {
     this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
   }
+
+  editTask(task: Task) {
+    this.editingTask = task;
+    this.taskService.patchTask(task).subscribe((updatedTask) => {
+      // Find the index of the task to update.
+      const index = this.tasks.findIndex(t => t.id === updatedTask.id);
+      if (index !== -1) {
+        // Update the task at the found index.
+        this.tasks[index] = updatedTask;
+      }
+    });
+  }
+
+  finishEditing() {
+    this.editingTask = null;
+  }
+
 
 }
