@@ -7,7 +7,8 @@ import { TaskService } from 'src/app/services/task.service';
   templateUrl: './edit-task.component.html',
   styleUrls: ['./edit-task.component.css']
 })
-export class EditTaskComponent implements OnInit, OnChanges {
+// export class EditTaskComponent implements OnInit, OnChanges {
+export class EditTaskComponent implements OnInit {
 
   @Input() task: Task;
   @Output() onUpdateTask: EventEmitter<Task> = new EventEmitter();
@@ -19,30 +20,30 @@ export class EditTaskComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    // This will run whenever @Input() task changes
-    if (changes.task && changes.task.currentValue) {
-      this.text = changes.task.currentValue.text;
-      this.day = changes.task.currentValue.day;
-      this.reminder = changes.task.currentValue.reminder;
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   // This will run whenever @Input() task changes
+  //   if (changes.task && changes.task.currentValue) {
+  //     this.text = changes.task.currentValue.text;
+  //     this.day = changes.task.currentValue.day;
+  //     this.reminder = changes.task.currentValue.reminder;
+  //   }
+  // }
 
   onSubmit() {
     if (!this.text) {
-      alert('Please edit a task!');
-      return;
+        alert('Please edit a task!');
+        return;
     }
 
     const updatedTask: Task = {
-      ...this.task,
-      text: this.text,
-      day: this.day,
-      reminder: this.reminder,
+        ...this.task,
+        text: this.text,
+        day: this.day,
+        reminder: this.reminder,
     };
 
-    this.taskService.updateTaskReminder(updatedTask).subscribe(task => {
-      this.onUpdateTask.emit(task);
+    this.taskService.patchTask(updatedTask).subscribe(task => {
+        this.onUpdateTask.emit(task);
     });
-  }
+}
 }
