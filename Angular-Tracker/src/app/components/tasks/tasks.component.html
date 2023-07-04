@@ -1,4 +1,6 @@
 <app-add-task (onAddTask)="addTask($event)"></app-add-task>
+<!--The *ngIf directive ensures that the form only appears when editingTask is not null. -->
+<app-edit-task *ngIf="editingTask" [task]="editingTask" (onUpdateTask)="finishEditing()"></app-edit-task>
 <app-task-item
   *ngFor="let task of tasks"
   [task]="task"
