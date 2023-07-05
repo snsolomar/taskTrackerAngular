@@ -20,8 +20,8 @@
     },
     {
       "id": 4,
-      "text": "Hello",
-      "day": "May 2nd",
+      "text": "test",
+      "day": "july 4th",
       "reminder": true
     }
   ]
