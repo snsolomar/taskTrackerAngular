@@ -48,3 +48,7 @@ Deploy locally
 - [Font Awesome Icons](https://fontawesome.com/docs)
 - [Node.JS](https://nodejs.org/en/docs)
 - [TypeScript](https://www.typescriptlang.org/docs/)
+
+## Pending Updates
+
+- Edit function for each Task (current ticket being resolved: conflict with double click reminder and edit button)
