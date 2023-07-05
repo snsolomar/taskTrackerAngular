@@ -9,6 +9,7 @@ export class UiService {
   private showAddTask: boolean = false;
   private subject = new Subject<any>();
   private showPatchTask: boolean = false;
+  private subjectPatch = new Subject<any>();
 
   constructor() { }
 
@@ -24,5 +25,9 @@ export class UiService {
   togglePatchTask(): void {
     this.showPatchTask = !this.showPatchTask;
     this.subject.next(this.showPatchTask);
+  }
+
+  onTogglePatch(): Observable<any> {
+    return this.subjectPatch.asObservable();
   }
 }

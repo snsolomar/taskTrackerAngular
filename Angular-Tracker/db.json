@@ -20,9 +20,15 @@
     },
     {
       "id": 4,
-      "text": "test",
-      "day": "july 4th",
-      "reminder": true
+      "text": "rest",
+      "day": "July4th",
+      "reminder": false
+    },
+    {
+      "text": "work",
+      "day": "july 5th",
+      "reminder": true,
+      "id": 5
     }
   ]
 }

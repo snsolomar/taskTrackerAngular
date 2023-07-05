@@ -44,7 +44,7 @@ export class TasksComponent implements OnInit {
   }
 
   editTask(task: Task) {
-    this.editingTask = {...task}; // Make a copy of task
+    this.editingTask = task;
     this.taskService.patchTask(task).subscribe((updatedTask) => {
       // Find the index of the task to update.
       const index = this.tasks.findIndex(t => t.id === updatedTask.id);

@@ -21,37 +21,16 @@ export class EditTaskComponent implements OnInit {
   showPatchTask: boolean;
 
   constructor(private taskService: TaskService, private uiService: UiService ) {
-    this.subscription = this.uiService.onToggle().subscribe(value => (this.showPatchTask = value));
+    this.subscription = this.uiService.onTogglePatch().subscribe(value => (this.showPatchTask = value));
    }
 
   ngOnInit(): void {}
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   // This will run whenever @Input() task changes
-  //   if (changes.task && changes.task.currentValue) {
-  //     this.text = changes.task.currentValue.text;
-  //     this.day = changes.task.currentValue.day;
-  //     this.reminder = changes.task.currentValue.reminder;
-  //   }
-  // }
 
   onSubmit() {
     if (!this.text) {
         alert('Please edit a task!');
         return;
     }
-
-    // const patchTask: Task = {
-    //   text: this.text,
-    //   day: this.day,
-    //   reminder: this.reminder,
-    // }
-
-    // this.onPatchTask.emit(patchTask);
-
-    // this.text = '';
-    // this.day = '';
-    // this.reminder = false;
 
     const patchTask: Task = {
         ...this.task,
@@ -62,6 +41,9 @@ export class EditTaskComponent implements OnInit {
 
     this.taskService.patchTask(patchTask).subscribe(task => {
         this.onPatchTask.emit(task);
+
+        // Once the task has been patched, hide the form
+        this.showPatchTask = false;
     });
 }
 }
