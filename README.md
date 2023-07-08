@@ -52,3 +52,4 @@ Deploy locally
 ## Pending Updates
 
 - Edit function for each Task (current ticket being resolved: conflict with double click reminder and edit button)
+- SQL DB
