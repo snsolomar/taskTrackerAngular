@@ -53,3 +53,4 @@ Deploy locally
 
 - Edit function for each Task (current ticket being resolved: conflict with double click reminder and edit button)
 - SQL DB
+- Put instruction in About page
